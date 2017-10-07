@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import reducers from './reducers';
-
 import App from './components/App';
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 let store = createStore(reducers, {}, applyMiddleware());
 
