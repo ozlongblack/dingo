@@ -1,35 +1,51 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
-  render() {
-    return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand">SampleApp</a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto" />
-          <form className="form-inline my-2 my-lg-0">
-            <button
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return (
+          <li className="nav-item">
+            <a
+              href="/auth/google"
               className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
             >
               Signin with Google
-            </button>
-          </form>
-        </div>
+            </a>
+          </li>
+        );
+      default:
+        return (
+          <li>
+            <a
+              href="/api/logout"
+              className="btn btn-outline-success my-2 my-sm-0"
+            >
+              Logout
+            </a>
+          </li>
+        );
+    }
+  }
+  render() {
+    console.log(this.props);
+    return (
+      <nav className="navbar navbar-light bg-light justify-content-between">
+        <Link to={this.props.auth ? '/surveys' : '/'} className="navbar-brand">
+          Navbar
+        </Link>
+        <ul className="nav justify-content-end">{this.renderContent()}</ul>
       </nav>
     );
   }
 }
 
-export default Header;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Header);
