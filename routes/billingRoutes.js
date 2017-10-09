@@ -1,8 +1,9 @@
 const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
+const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = app => {
-  app.post('/api/stripe', async (req, res) => {
+  app.post('/api/stripe', requireLogin, async (req, res) => {
     const charge = await stripe.charges.create({
       amount: 500,
       currency: 'usd',
@@ -10,34 +11,9 @@ module.exports = app => {
       source: req.body.id
     });
 
-    console.log(charge);
+    req.user.credits += 5;
+    const user = await req.user.save();
+
+    res.send(user);
   });
 };
-
-// card
-// :
-// {id: "card_1BAgGGC3qBelfANecVpoC1sP", object: "card", address_city: null, address_country: null,…}
-// client_ip
-// :
-// "202.159.155.78"
-// created
-// :
-// 1507474812
-// email
-// :
-// "a@a.a"
-// id
-// :
-// "tok_1BAgGGC3qBelfANeeOtoJX1z"
-// livemode
-// :
-// false
-// object
-// :
-// "token"
-// type
-// :
-// "card"
-// used
-// :
-// false
