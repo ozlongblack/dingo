@@ -1,3 +1,5 @@
+import './App.css';
+
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -5,7 +7,7 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-const Dashboard = () => <div>Dashboard</div>;
+import Dashboard from './Dashboard';
 const SurveyNew = () => <div>SurveyNew</div>;
 
 class App extends Component {
@@ -15,7 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div id="app" className="container-fluid">
         <BrowserRouter>
           <div>
             <Header />

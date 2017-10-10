@@ -14,7 +14,7 @@ class Header extends Component {
           <li className="nav-item">
             <a
               href="/auth/google"
-              className="btn btn-outline-success my-2 my-sm-0"
+              className="btn btn-outline-success btn-sm my-2 my-sm-0"
             >
               Signin with Google
             </a>
@@ -22,14 +22,21 @@ class Header extends Component {
         );
       default:
         return [
-          <li key="1">Credits: {this.props.auth.credits}</li>,
+          <li key="1">
+            <a className="btn btn-sm mr-2">
+              Credits{' '}
+              <span className="badge badge-secondary">
+                {this.props.auth.credits}
+              </span>
+            </a>
+          </li>,
           <li key="2">
             <Payments />
           </li>,
           <li key="3">
             <a
               href="/api/logout"
-              className="btn btn-outline-success my-2 my-sm-0 ml-3"
+              className="btn btn-outline-success btn-sm my-2 my-sm-0"
             >
               Logout
             </a>
@@ -40,11 +47,11 @@ class Header extends Component {
   render() {
     console.log(this.props);
     return (
-      <nav className="navbar navbar-light bg-light justify-content-between">
+      <nav className="navbar navbar-light justify-content-between">
         <Link to={this.props.auth ? '/surveys' : '/'} className="navbar-brand">
-          Navbar
+          Dingo
         </Link>
-        <ul className="nav justify-content-end">{this.renderContent()}</ul>
+        <ul className="nav justify-content-between">{this.renderContent()}</ul>
       </nav>
     );
   }
