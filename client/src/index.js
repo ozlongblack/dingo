@@ -7,7 +7,11 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './components/App';
 
+import axios from 'axios';
+
 import 'bootstrap/dist/css/bootstrap.css';
+
+window.axios = axios;
 
 let store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
