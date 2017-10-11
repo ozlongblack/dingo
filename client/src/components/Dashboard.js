@@ -3,6 +3,8 @@ import './Dashboard.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import SurveyList from './surveys/SurveyList';
+
 class Dashboard extends Component {
   render() {
     return (
@@ -16,6 +18,9 @@ class Dashboard extends Component {
               </Link>
             </li>
           </ul>
+          <div>
+            <SurveyList />
+          </div>
         </div>
       </div>
     );

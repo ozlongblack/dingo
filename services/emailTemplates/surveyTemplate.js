@@ -12,7 +12,7 @@ module.exports = survey => {
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
                   <tr>
                     <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                      <img src="https://lh6.googleusercontent.com/0P4rRF709wriq69ZqI2wHGqm6f4sHo5EdNbO0caJ2HX3CdHPL_cXiV7A2D46RwewzGwiVkbhTHjUGQ=w3360-h1642" style="width: 120px; border:none;" />
+                      <img src="https://lh6.googleusercontent.com/0P4rRF709wriq69ZqI2wHGqm6f4sHo5EdNbO0caJ2HX3CdHPL_cXiV7A2D46RwewzGwiVkbhTHjUGQ=w3360-h1642" style="width: 80px; border:none;" />
                     </td>
                   </tr>
                   <tr>
@@ -33,13 +33,13 @@ module.exports = survey => {
                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                               <tr>
                                 <td width="260" valign="top" style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
-                                  <a href="${keys.redirectDomain}/api/surveys/done">YES</a>
+                                  <a href="${keys.redirectDomain}/api/surveys/${survey.id}/yes">YES</a>
                                 </td>
                                 <td style="font-size: 0; line-height: 0;" width="20">
                                   &nbsp;
                                 </td>
                                 <td width="260" valign="top" style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
-                                  <a href="${keys.redirectDomain}/api/surveys/done">NO</a>
+                                  <a href="${keys.redirectDomain}/api/surveys/${survey.id}/no">NO</a>
                                 </td>
                               </tr>
                             </table>
