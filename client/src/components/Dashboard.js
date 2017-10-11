@@ -9,9 +9,9 @@ class Dashboard extends Component {
       <div id="dashboard">
         <div className="title">Dashboard</div>
         <div className="wrap container-fluid p-3">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <Link to="/surveys/new" class="btn btn-primary btn-sm">
+          <ul className="nav justify-content-end">
+            <li className="nav-item">
+              <Link to="/surveys/new" className="btn btn-primary btn-sm">
                 New
               </Link>
             </li>

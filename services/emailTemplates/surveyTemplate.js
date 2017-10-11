@@ -12,7 +12,7 @@ module.exports = survey => {
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
                   <tr>
                     <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                      Row 1
+                      <img src="https://lh6.googleusercontent.com/0P4rRF709wriq69ZqI2wHGqm6f4sHo5EdNbO0caJ2HX3CdHPL_cXiV7A2D46RwewzGwiVkbhTHjUGQ=w3360-h1642" style="width: 120px; border:none;" />
                     </td>
                   </tr>
                   <tr>
@@ -53,8 +53,7 @@ module.exports = survey => {
                       <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr>
                           <td width="75%">
-                            &reg; Someone, somewhere 2017<br/>
-                            Unsubscribe to this newsletter instantly
+                            ozlongblack@gmail.com, 2017<br/>
                           </td>
                           <td>
                             &nbsp;
