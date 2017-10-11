@@ -1,7 +1,6 @@
 import './SurveyNew.css';
 
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 
 import SurveyForm from './SurveyForm';
