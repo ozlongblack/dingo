@@ -45,7 +45,6 @@ class Header extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <nav className="navbar navbar-light justify-content-between">
         <Link to={this.props.auth ? '/surveys' : '/'} className="navbar-brand">

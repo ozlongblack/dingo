@@ -3,6 +3,7 @@
 }
 
 .survey-card-title {
+  font-family: 'Proxima Nova', Helvetica, sans-serif;
   font-size: 14px;
 }
 
@@ -22,4 +23,33 @@
 .survey-card-footer::after {
   content: '';
   flex-basis: 100%;
+}
+
+.survey-no-response {
+  height: 157px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.survey-no-response div {
+  display: block;
+}
+
+.survey-no-response div img {
+  width: 48px;
+}
+
+.survey-loading,
+.survey-no-available {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 328px;
+}
+
+.survey-no-response div {
+  display: block;
 }
