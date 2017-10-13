@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Payments from './Payments';
 
 class Header extends Component {
-  renderContent() {
+  renderContent = () => {
     switch (this.props.auth) {
       case null:
         return;
@@ -43,7 +43,8 @@ class Header extends Component {
           </li>
         ];
     }
-  }
+  };
+
   render() {
     return (
       <nav className="navbar navbar-light justify-content-between">

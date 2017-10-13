@@ -1,5 +1,14 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEY, SERVER_ERROR, CLEAR_ERROR } from './types';
+import {
+  FETCH_USER,
+  FETCH_SURVEYS,
+  FETCH_SURVEY,
+  CLEAR_SURVEY,
+  SERVER_ERROR,
+  CLEAR_ERROR
+} from './types';
+
+// User
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -13,10 +22,22 @@ export const handleToken = token => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const fetchSurvey = () => async dispatch => {
+// Survey
+
+export const fetchSurveys = () => async dispatch => {
   const res = await axios.get('/api/surveys');
 
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+};
+
+export const fetchSurvey = id => async dispatch => {
+  const res = await axios.get(`/api/surveys/${id}`);
+
   dispatch({ type: FETCH_SURVEY, payload: res.data });
+};
+
+export const clearSurvey = () => async dispatch => {
+  dispatch({ type: CLEAR_SURVEY });
 };
 
 export const submitSurvey = (values, history) => async dispatch => {
@@ -25,10 +46,12 @@ export const submitSurvey = (values, history) => async dispatch => {
 
     history.push('/surveys');
     dispatch({ type: FETCH_USER, payload: res.data });
-  } catch (e) {
+  } catch (err) {
     // console.log(e.response.data.error);
-    dispatch({ type: SERVER_ERROR, error: e.response.data.error });
+    dispatch({ type: SERVER_ERROR, error: err.response.data.error });
   }
 };
+
+// Error
 
 export const clearError = () => dispatch => dispatch({ type: CLEAR_ERROR });

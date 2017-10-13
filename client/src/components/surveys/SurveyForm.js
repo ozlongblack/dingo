@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import { reduxForm, Field } from 'redux-form';
 import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
@@ -13,7 +14,7 @@ const FIELDS = [
 ];
 
 class SurveyForm extends Component {
-  renderFields() {
+  renderFields = () => {
     return _.map(FIELDS, ({ label, name }) => {
       return (
         <Field
@@ -25,7 +26,7 @@ class SurveyForm extends Component {
         />
       );
     });
-  }
+  };
 
   render() {
     return (

@@ -1,15 +1,17 @@
 import './App.css';
 
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import * as actions from '../actions';
 
+import { ToastContainer, toast } from 'react-toastify';
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
+import SurveyDetail from './surveys/SurveyDetail';
 
 class App extends Component {
   componentDidMount() {
@@ -42,7 +44,8 @@ class App extends Component {
             <div className="p-3">
               <Route exact path="/" component={Landing} />
               <Route exact path="/surveys" component={Dashboard} />
-              <Route path="/surveys/new" component={SurveyNew} />
+              <Route exact path="/surveys/new" component={SurveyNew} />
+              <Route path="/surveys/:id" component={SurveyDetail} />
             </div>
           </div>
         </BrowserRouter>

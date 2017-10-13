@@ -1,99 +1,22 @@
 import './SurveyList.css';
-import email from './email.png';
 import chat from './chat.png';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Doughnut } from 'react-chartjs-2';
-import Spinner from 'react-spinkit';
+import { withRouter } from 'react-router-dom';
 
-import { fetchSurvey } from '../../actions';
+import * as actions from '../../actions';
+
+import Spinner from 'react-spinkit';
+import SurveySummary from './SurveySummary';
 
 class SurveyList extends Component {
   componentDidMount() {
-    this.props.fetchSurvey();
+    this.props.fetchSurveys();
   }
 
-  renderSummary(survey) {
-    if (survey.yes === 0 && survey.no === 0) {
-      return (
-        <div className="survey-no-response">
-          <div className="p-1">
-            <img src={email} alt="No one responded." />
-          </div>
-          <div>No one responded</div>
-        </div>
-      );
-    } else {
-      const choiceData = {
-        labels: ['YES', 'NO'],
-        datasets: [
-          {
-            data: [survey.yes, survey.no],
-            backgroundColor: ['#CDDC39', '#F44336'],
-            hoverBackgroundColor: ['#C0CA33', '#E53935']
-          }
-        ]
-      };
-
-      const responded = survey.recipients.filter(
-        recipient => recipient.responded
-      ).length;
-
-      const notResponded = survey.recipients.length - responded;
-
-      const respondedData = {
-        labels: ['RESPONDED', 'NOT RESPONDED'],
-        datasets: [
-          {
-            data: [responded, notResponded],
-            backgroundColor: ['#00BCD4', '#EEEEEE'],
-            hoverBackgroundColor: ['#00ACC1', '#DDDDDD']
-          }
-        ]
-      };
-
-      return (
-        <div className="row">
-          <div className="col-6">
-            <Doughnut
-              data={choiceData}
-              legend={{
-                position: 'bottom',
-                labels: {
-                  boxWidth: 10,
-                  fontSize: 10,
-                  fontFamily: 'Proxima Nova'
-                }
-              }}
-              options={{
-                maintainAspectRatio: false
-              }}
-            />
-          </div>
-          <div className="col-6">
-            <Doughnut
-              data={respondedData}
-              legend={{
-                position: 'bottom',
-                labels: {
-                  boxWidth: 10,
-                  fontSize: 10,
-                  fontFamily: 'Proxima Nova'
-                }
-              }}
-              options={{
-                maintainAspectRatio: false
-              }}
-            />
-          </div>
-        </div>
-      );
-    }
-  }
-
-  renderList() {
-    if (!this.props.survey) {
+  renderList = () => {
+    if (!this.props.survey.surveyList) {
       return (
         <div className="col survey-loading">
           <div className="p-3">
@@ -104,7 +27,7 @@ class SurveyList extends Component {
       );
     }
 
-    if (this.props.survey.length === 0) {
+    if (this.props.survey.surveyList.length === 0) {
       return (
         <div className="col survey-no-available">
           <div className="p-3">
@@ -115,14 +38,18 @@ class SurveyList extends Component {
       );
     }
 
-    return this.props.survey.reverse().map(survey => {
+    return this.props.survey.surveyList.reverse().map(survey => {
       return (
-        <div key={survey._id} className="col-sm-6 mb-3">
+        <div
+          key={survey._id}
+          className="col-sm-6 mb-3"
+          onClick={() => this.onDetail(survey)}
+        >
           <div className="survey-card">
             <div className="card-body">
               <h4 className="survey-card-title">{survey.title}</h4>
               <p className="survey-card-text">{survey.subject}</p>
-              <div>{this.renderSummary(survey)}</div>
+              <div>{SurveySummary(survey)}</div>
               <div className="survey-card-footer">
                 <small className="text-muted">
                   Sent on {new Date(survey.dateSent).toLocaleDateString()}
@@ -133,7 +60,13 @@ class SurveyList extends Component {
         </div>
       );
     });
-  }
+  };
+
+  onDetail = survey => {
+    this.props.history.push({
+      pathname: `/surveys/${survey._id}`
+    });
+  };
 
   render() {
     return <div className="row pt-3">{this.renderList()}</div>;
@@ -144,4 +77,4 @@ function mapStateToProps({ survey }) {
   return { survey };
 }
 
-export default connect(mapStateToProps, { fetchSurvey })(SurveyList);
+export default connect(mapStateToProps, actions)(withRouter(SurveyList));

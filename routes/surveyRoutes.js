@@ -66,6 +66,15 @@ module.exports = app => {
     res.send(surveys);
   });
 
+  app.get('/api/surveys/:id', requireLogin, async (req, res) => {
+    const survey = await Survey.findOne({
+      _user: req.user.id,
+      _id: req.params.id
+    });
+
+    res.send(survey);
+  });
+
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     if (req.user.credits) {
       const { title, subject, body, recipients } = req.body;
