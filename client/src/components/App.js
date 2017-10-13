@@ -2,7 +2,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import * as actions from '../actions';
 
@@ -42,10 +42,12 @@ class App extends Component {
           <div>
             <Header />
             <div className="p-3">
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/surveys" component={Dashboard} />
-              <Route exact path="/surveys/new" component={SurveyNew} />
-              <Route path="/surveys/:id" component={SurveyDetail} />
+              <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/surveys" component={Dashboard} />
+                <Route exact path="/surveys/new" component={SurveyNew} />
+                <Route path="/surveys/:id" component={SurveyDetail} />
+              </Switch>
             </div>
           </div>
         </BrowserRouter>
