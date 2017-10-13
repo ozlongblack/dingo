@@ -12,7 +12,7 @@ module.exports = survey => {
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
                   <tr>
                     <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                      <img src="https://lh6.googleusercontent.com/0P4rRF709wriq69ZqI2wHGqm6f4sHo5EdNbO0caJ2HX3CdHPL_cXiV7A2D46RwewzGwiVkbhTHjUGQ=w3360-h1642" style="width: 80px; border:none;" />
+                      
                     </td>
                   </tr>
                   <tr>

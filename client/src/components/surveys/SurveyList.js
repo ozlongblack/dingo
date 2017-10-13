@@ -1,5 +1,5 @@
 import './SurveyList.css';
-import chat from './chat.png';
+import chat from '../../images/chat.png';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';

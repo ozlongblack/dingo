@@ -1,0 +1,51 @@
+.landing-section {
+  background-color: #f1f5f9;
+  position: relative;
+  text-align: center;
+}
+
+.landing-title {
+  font-family: 'proxima_nova_altbold';
+  font-size: 32px;
+}
+.landing-description {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.landing-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url('./landing-bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  font-family: 'Proxima Nova';
+  font-weight: 700;
+  min-height: 95vh;
+}
+
+.landing-features {
+  padding: 3em 1em;
+}
+
+.landing-footer {
+  padding: 3em 1em;
+}
+
+.landing-section .card {
+  padding: 1em;
+}
+
+.landing-section .card .card-image {
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .landing-title {
+    font-size: 48px;
+  }
+}

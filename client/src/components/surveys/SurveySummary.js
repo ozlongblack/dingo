@@ -1,4 +1,4 @@
-import email from './email.png';
+import email from '../../images/email.png';
 
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';

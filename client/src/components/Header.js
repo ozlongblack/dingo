@@ -1,58 +1,85 @@
+import coffee from '../images/coffee.png';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import Payments from './Payments';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
   renderContent = () => {
     switch (this.props.auth) {
       case null:
         return;
       case false:
         return (
-          <li className="nav-item">
+          <NavItem>
             <a
               href="/auth/google"
               className="btn btn-outline-success btn-sm my-2 my-sm-0"
             >
               Signin with Google
             </a>
-          </li>
+          </NavItem>
         );
       default:
         return [
-          <li key="1">
+          <NavItem key="1">
             <a className="btn btn-sm mr-2">
               Credits{' '}
               <span className="badge badge-secondary">
                 {this.props.auth.credits}
               </span>
             </a>
-          </li>,
-          <li key="2">
+          </NavItem>,
+          <NavItem key="2">
             <Payments />
-          </li>,
-          <li key="3">
+          </NavItem>,
+          <NavItem key="3">
             <a
               href="/api/logout"
               className="btn btn-outline-success btn-sm my-2 my-sm-0"
             >
               Logout
             </a>
-          </li>
+          </NavItem>
         ];
     }
   };
 
   render() {
     return (
-      <nav className="navbar navbar-light justify-content-between">
-        <Link to={this.props.auth ? '/surveys' : '/'} className="navbar-brand">
-          Dingo
-        </Link>
-        <ul className="nav justify-content-between">{this.renderContent()}</ul>
-      </nav>
+      <div>
+        <Navbar color="faded" light expand="md">
+          <Link
+            to={this.props.auth ? '/surveys' : '/'}
+            className="navbar-brand"
+          >
+            <img src={coffee} style={{ width: '48px' }} alt="logo" />
+          </Link>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              {this.renderContent()}
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
     );
   }
 }

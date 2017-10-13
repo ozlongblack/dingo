@@ -41,7 +41,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <div className="p-3">
+            <div>
               <Switch>
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/surveys" component={Dashboard} />

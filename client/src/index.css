@@ -13,6 +13,23 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'proxima_nova_altbold';
+  src: url('./fonts/Mark Simonson - Proxima Nova Alt Bold-webfont.eot');
+  src: url('./fonts/Mark Simonson - Proxima Nova Alt Bold-webfont.eot?#iefix')
+      format('embedded-opentype'),
+    url('./fonts/Mark Simonson - Proxima Nova Alt Bold-webfont.woff2')
+      format('woff2'),
+    url('./fonts/Mark Simonson - Proxima Nova Alt Bold-webfont.woff')
+      format('woff'),
+    url('./fonts/Mark Simonson - Proxima Nova Alt Bold-webfont.ttf')
+      format('truetype'),
+    url('./fonts/Mark Simonson - Proxima Nova Alt Bold-webfont.svg#proxima_nova_altbold')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-color: #f1f5f9;
   color: #525f7f;
