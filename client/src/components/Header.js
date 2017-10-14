@@ -33,7 +33,7 @@ class Header extends Component {
               href="/auth/google"
               className="btn btn-outline-success btn-sm my-2 my-sm-0"
             >
-              Signin with Google
+              SIGNIN with Google
             </a>
           </NavItem>
         );
@@ -55,7 +55,7 @@ class Header extends Component {
               href="/api/logout"
               className="btn btn-outline-success btn-sm my-2 my-sm-0"
             >
-              Logout
+              SIGNOUT
             </a>
           </NavItem>
         ];
@@ -74,6 +74,20 @@ class Header extends Component {
           </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="" navbar>
+              <NavItem>
+                <Link to={'/'} className="btn btn-sm mr-2">
+                  About
+                </Link>
+              </NavItem>
+              {this.props.auth ? (
+                <NavItem>
+                  <Link to={'/surveys'} className="btn btn-sm mr-2">
+                    Survey
+                  </Link>
+                </NavItem>
+              ) : null}
+            </Nav>
             <Nav className="ml-auto" navbar>
               {this.renderContent()}
             </Nav>

@@ -10,6 +10,7 @@ import SurveySummary from './SurveySummary';
 
 class SurveyDetail extends Component {
   componentDidMount() {
+    console.log(this.props);
     this.props.fetchSurvey(this.props.match.params.id);
   }
 

@@ -2,7 +2,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import * as actions from '../actions';
 
@@ -44,9 +44,35 @@ class App extends Component {
             <div>
               <Switch>
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/surveys" component={Dashboard} />
-                <Route exact path="/surveys/new" component={SurveyNew} />
-                <Route path="/surveys/:id" component={SurveyDetail} />
+                <Route
+                  exact
+                  path="/surveys"
+                  render={() =>
+                    this.props.auth === false ? (
+                      <Redirect to="/" />
+                    ) : (
+                      <Dashboard />
+                    )}
+                />
+                <Route
+                  exact
+                  path="/surveys/new"
+                  render={() =>
+                    this.props.auth === false ? (
+                      <Redirect to="/" />
+                    ) : (
+                      <SurveyNew />
+                    )}
+                />
+                <Route
+                  path="/surveys/:id"
+                  render={props =>
+                    this.props.auth === false ? (
+                      <Redirect to="/" />
+                    ) : (
+                      <SurveyDetail {...props} />
+                    )}
+                />
               </Switch>
             </div>
           </div>
@@ -56,8 +82,8 @@ class App extends Component {
   }
 }
 
-function matStateToProps({ error }) {
-  return { error };
+function matStateToProps({ auth, error }) {
+  return { auth, error };
 }
 
 export default connect(matStateToProps, actions)(App);

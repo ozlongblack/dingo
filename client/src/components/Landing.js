@@ -9,16 +9,28 @@ const Landing = () => {
   return (
     <div>
       <section className="landing-section landing-intro">
-        <div className="landing-title">SURVEY DEMO WEB APPLICATION</div>
+        <div className="landing-title">
+          <div className="col-12 mb-3" style={{ margin: '0 auto' }}>
+            SURVEY DEMO WEB APPLICATION
+          </div>
+        </div>
         <div className="landing-description">
-          This is a demo web application.
+          <div
+            className="col-11 col-sm-10 col-md-8 mb-3"
+            style={{ margin: '0 auto' }}
+          >
+            Using this application, you can create a survey with sending emails
+            to recipients and collect feedback. This application is implemented
+            in Node.js/Express, React/Redux, Bootstrap 4, Passport.js, Mongo DB,
+            Google OAuth 2.0, Stripe API, Sendgrid API, Chart.js 2
+          </div>
         </div>
         <div className="p-3">
           <a
             href="https://github.com/ozlongblack/dingo"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-success mr-3"
+            className="btn btn-success mb-3 mr-3"
           >
             VIEW REPOSITORY
           </a>
@@ -26,7 +38,7 @@ const Landing = () => {
             href="https://www.linkedin.com/in/kihwan-cho-88440470/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-light"
+            className="btn btn-light mb-3"
           >
             VIEW PROFILE
           </a>
@@ -45,7 +57,7 @@ const Landing = () => {
               <h6 className="card-title">HOW TO USE</h6>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
-                  <small>Signin with Google Oauth 2.0</small>
+                  <small>Signin with Google OAuth 2.0</small>
                 </li>
                 <li className="list-group-item">
                   <small>Add credits</small>
@@ -79,7 +91,7 @@ const Landing = () => {
                   <small>Mongo DB</small>
                 </li>
                 <li className="list-group-item">
-                  <small>Google Oauth 2.0</small>
+                  <small>Google OAuth 2.0</small>
                 </li>
                 <li className="list-group-item">
                   <small>Stripe API</small>
